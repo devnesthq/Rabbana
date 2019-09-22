@@ -186,7 +186,7 @@ export default class index extends Component {
                                     <View style={styles.item}>
                                         <Button transparent onPress={() => this.setData(item)}>
                                     
-                                            <Text style={styles.title}>{item.word_en}</Text>
+                                            <Text style={styles.title}>{item.view}</Text>
                                         </Button>
                                     </View>
                                     
