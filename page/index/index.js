@@ -43,7 +43,7 @@ export default class index extends Component {
 
     player = ( event ) => {
         
-        const sound = new Sound('audio.mp3', Sound.MAIN_BUNDLE, (error) => {
+        const sound = new Sound('002127.mp3', Sound.MAIN_BUNDLE, (error) => {
             
             if (error) {
                 this.setState({isPlay: false}, () => {
