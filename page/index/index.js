@@ -10,8 +10,9 @@ import React, { Fragment, Component } from 'react';
 import { Text, View, FlatList, ScrollView, StyleSheet } from 'react-native';
 import { Container, Header, Title, Button, Left, Right, Body, Icon, Card, CardItem, Drawer } from 'native-base';
 import SideBar from './index_drawer'
-var Sound = require('react-native-sound');
+import data from './json/data.json'
 
+var Sound = require('react-native-sound');
 
 const DATA = [
     {
@@ -62,6 +63,11 @@ export default class index extends Component {
         super(props)
         this.state = {
             isPlay: false,
+
+            index: data[0].index,
+            word_en: data[0].word_en,
+            word_arb:  data[0].word_arb,
+            word_bn:  data[0].word_bn,
         }
     }
 
@@ -73,6 +79,9 @@ export default class index extends Component {
     openDrawer = () => {
         this.drawer._root.open()
     };
+
+
+
 
     player = ( event ) => {
         
@@ -101,7 +110,19 @@ export default class index extends Component {
     }
 
 
+    setData = (e) => {
+        this.setState({
+            word_en: e.word_en,
+            word_arb: e.word_arb,
+            word_bn: e.word_bn,
+        })
+    }
+
+
     render() {
+
+        console.log("json Data", data)
+
         return (
             <Fragment>
 
@@ -125,19 +146,17 @@ export default class index extends Component {
                     <Container >
                         <Card transparent style={{ backgroundColor: '#d0d6dc' }}>
                             <CardItem header >
-                                <Text>List Of work</Text>
+                                <Text>{this.state.word_en}</Text>
                             </CardItem>
                             <CardItem>
                                 <Body>
                                     <Text>
-                                        adasdjnsadsajd
-                                        asdjkasnkdjsad
-                                        jasdsd
+                                        {this.state.word_bn}
                                     </Text>
                                 </Body>
                             </CardItem>
                             <CardItem footer>
-                                <Text>GeekyAnts</Text>
+                                <Text> {this.state.word_arb} </Text>
                             </CardItem>
                         </Card>
 
@@ -162,11 +181,15 @@ export default class index extends Component {
 
                         <View style={styles.container}>
                             <FlatList
-                                data={DATA}
+                                data={data}
                                 renderItem={({ item }) =>
                                     <View style={styles.item}>
-                                        <Text style={styles.title}>{item.title}</Text>
+                                        <Button transparent onPress={() => this.setData(item)}>
+                                    
+                                            <Text style={styles.title}>{item.word_en}</Text>
+                                        </Button>
                                     </View>
+                                    
                                 }
                                 keyExtractor={item => item.id}
                             />
