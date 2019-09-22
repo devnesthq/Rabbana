@@ -10,7 +10,7 @@ import React, {Fragment} from 'react';
 import {  createAppContainer } from "react-navigation";
 import { createStackNavigator } from 'react-navigation-stack';
 // pages
-import Index from './page/index'
+import Index from './page/index/index'
 
 const AppNavigator = createStackNavigator({
   Index : { screen: Index },
