@@ -26,6 +26,7 @@ export default class index extends Component {
             word_en: data[0].word_en,
             word_arb:  data[0].word_arb,
             word_bn:  data[0].word_bn,
+            track:  data[0].track,
         }
     }
 
@@ -43,7 +44,7 @@ export default class index extends Component {
 
     player = ( event ) => {
         
-        const sound = new Sound('002127.mp3', Sound.MAIN_BUNDLE, (error) => {
+        const sound = new Sound(this.state.track, Sound.MAIN_BUNDLE, (error) => {
             
             if (error) {
                 this.setState({isPlay: false}, () => {
@@ -73,6 +74,7 @@ export default class index extends Component {
             word_en: e.word_en,
             word_arb: e.word_arb,
             word_bn: e.word_bn,
+            track: e.track,
         })
     }
 
