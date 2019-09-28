@@ -40,8 +40,6 @@ export default class index extends Component {
     };
 
 
-
-
     player = ( event ) => {
         
         const sound = new Sound(this.state.track, Sound.MAIN_BUNDLE, (error) => {
@@ -75,7 +73,7 @@ export default class index extends Component {
             word_arb: e.word_arb,
             word_bn: e.word_bn,
             track: e.track,
-        })
+        }, () => this.player('pause'))
     }
 
 
