@@ -51,7 +51,7 @@ export default class index extends Component {
             } else {
                 if(event === 'pause'){
                     this.setState({isPlay: false}, () => {
-                        global.sound.stop(() => { alert('worked')})
+                        global.sound.stop()
                     })
                 } 
                 if(event === 'play'){
@@ -73,7 +73,7 @@ export default class index extends Component {
             word_arb: e.word_arb,
             word_bn: e.word_bn,
             track: e.track,
-        }, () => this.player('pause'))
+        }, () => this.state.isPlay && this.player('pause'))
     }
 
 
